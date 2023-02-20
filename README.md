@@ -44,14 +44,14 @@ import javax.servlet.http.HttpServletResponse;
   @Resource
   private AbstractAutoServiceRegistration<?> abstractAutoServiceRegistration;
 
-   /**
-    * nacos 服务主动下线
-    *
-    * @param request HttpServletRequest
-    * @param response HttpServletResponse
-    * @return String
-    * @author godcheese [godcheese@outlook.com]
-    * @date 2022-12-22
+     /**
+      * nacos 服务主动下线
+      *
+      * @param request HttpServletRequest
+      * @param response HttpServletResponse
+      * @return String
+      * @author godcheese [godcheese@outlook.com]
+      * @date 2022-12-22
       */
       @GetMapping(value = "/nacos/deregister")
       public String deregister(HttpServletRequest request, HttpServletResponse response) {
