@@ -30,11 +30,11 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
-* nacos
-*
-* @author godcheese [godcheese@outlook.com]
-* @date 2022-12-22
+ /**
+  * nacos
+  *
+  * @author godcheese [godcheese@outlook.com]
+  * @date 2022-12-22
   */
   @Slf4j
   @RestController
@@ -44,7 +44,7 @@ import javax.servlet.http.HttpServletResponse;
   @Resource
   private AbstractAutoServiceRegistration<?> abstractAutoServiceRegistration;
 
-  /**
+   /**
     * nacos 服务主动下线
     *
     * @param request HttpServletRequest
