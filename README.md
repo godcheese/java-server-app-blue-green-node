@@ -1,11 +1,11 @@
-# java-server-app-blue-green-node
-Java 服务器应用蓝绿节点 Shell 脚本
+# java-server-app-red-black-node
+Java （Spring Boot）项目服务器应用红黑节点 Shell 脚本
 
-> 此处的蓝绿节点，指的是蓝是新节点（带有新功能），绿是老节点，在蓝节点上线前，线上运行的是绿节点，在蓝节点部署后，自动将流量切换到蓝节点（蓝节点上线）后，绿节点开始下线，直到 kill，这样流量就会无缝的切换到蓝节点，用户理论上并无感知。算是一种蓝绿节点部署实现思路，用以实现线上环境后端应用无缝切换上线新功能。目前仅支持以 Nacos 为注册中心的服务。上线准备中需要为服务提供一个 deregister restful 接口供蓝绿脚本调用（以下有示例代码）。 
+> 此处的红黑节点，指的是红是新节点（带有新功能），黑是老节点，在红节点上线前，线上运行的是黑节点，在红节点部署后，自动将流量切换到红节点（红节点上线）后，绿节点开始下线，直到 kill，这样流量就会无缝的切换到红节点，用户理论上并无感知。算是一种红黑节点部署实现思路，用以实现线上环境后端应用无缝切换上线新功能。目前仅支持以 Nacos 为注册中心的服务。上线准备中需要为服务提供一个 deregister restful 接口供红黑脚本调用（以下有示例代码）。 
 
 ## 特性 Features
 
-- [x] 无缝切换蓝绿服务
+- [x] 无缝切换红黑服务
 - [x] 随机应用端口部署
 - [x] 探测新节点健康状态
 - [x] 同一个应用支持一次部署多个节点
@@ -13,7 +13,7 @@ Java 服务器应用蓝绿节点 Shell 脚本
 
 ## 部署 Deploy
 
-为要参与蓝绿节点部署的应用准备以下接口供服务主动下线
+为要参与红黑节点部署的应用准备以下接口供服务主动下线
 
 ```java
 package com.godcheese.example;
@@ -96,7 +96,7 @@ bash deploy.sh "example" "example.jar" "dev" 8000 8999 2 1 20 256k 1024m 1024m
 
 ## 反馈 Feedback
 
-[Issues](https://github.com/godcheese/java-server-app-blue-green-node/issues)
+[Issues](https://github.com/godcheese/java-server-app-red-black-node/issues)
 
 ## 捐赠 Donation
 
