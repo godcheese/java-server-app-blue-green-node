@@ -14,7 +14,7 @@
 # 8999 随机端口区间-end
 # 2 端口数量, 根据节点数量 * 2
 # 1 启动的新节点数量
-# 20 节点守护时探测新节点的次数，每次间隔 10s
+# 20 节点守护时探测新节点的次数，每次间隔 1s
 # 256k JVM Xss
 # 1024m JVM Xms
 # 1024m JVM Xmx
@@ -35,7 +35,7 @@ port_start=$4
 port_end=$5
 port_count=$6
 node_count=$7
-# 超时检测次数，每次间隔 10s
+# 超时检测次数，每次间隔 1s
 check_times=$8
 xss=$9
 xms=${10}
@@ -74,11 +74,14 @@ nohup bash "$script_current_path/node_guard.sh" "$check_times" "$running_pid" "$
 
 node_guard_log="$parent_path/node_guard.log"
 count=0
-check_times=100
+check_times=1000
+# 单位：秒
+sleep_time=1
+pre_percent=$((100/1000))
 echo "正在部署中,清稍等...(0%)"
 while [[ $check_times -gt $count ]]; do
   count=$((count + 1))
-  percent=`expr 1 \* $count`
+  percent=`expr $pre_percent \* $count`
   echo "正在部署中,清稍等...($percent%)"
   if [ -f "$node_guard_log" ]; then
     res=$(cat "$node_guard_log")
@@ -103,7 +106,7 @@ while [[ $check_times -gt $count ]]; do
       exit 0
     fi
   fi
-  sleep 10s
+  sleep ${sleep_time}s
 done
 echo "部署超时."
 exit 1

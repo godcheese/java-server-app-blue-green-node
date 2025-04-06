@@ -7,7 +7,7 @@
 
 # 节点守护：检查新节点是否健康并 kill 老节点
 
-# check_times 检查时循环次数，相当于检查超时，每次间隔 10s
+# check_times 检查时循环次数，相当于检查超时，每次间隔 1s
 # old_node_pids 正在运行（老节点）的 pid
 # new_node_ports 新节点端口数组（若存在多个新节点）
 
@@ -72,7 +72,7 @@ function circle_check() {
         fi
       fi
       ni=$((ni + 1))
-      sleep 2s
+      sleep 1s
     done
   done
   if [[ $success_flag -eq 1 ]]; then
@@ -80,7 +80,7 @@ function circle_check() {
     # 先判断下是否有正在运行的老节点
     if [[ -n $old_node_pids ]]; then
       # 服务运行成功后，等待 60s 供服务在 nacos 上注册成功，注册成功后再去下线老节点和 kill 老节点
-      sleep 60s
+      sleep 30s
       # 下线老节点
       for old_node_pid in $old_node_pids; do
         # ipv4
