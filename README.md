@@ -1,5 +1,5 @@
 # java-server-app-blue-green-node
-Java 服务器应用蓝绿节点 Shell 脚本
+Java （Spring Boot）项目服务器应用蓝绿节点 Shell 脚本
 
 > 此处的蓝绿节点，指的是蓝是新节点（带有新功能），绿是老节点，在蓝节点上线前，线上运行的是绿节点，在蓝节点部署后，自动将流量切换到蓝节点（蓝节点上线）后，绿节点开始下线，直到 kill，这样流量就会无缝的切换到蓝节点，用户理论上并无感知。算是一种蓝绿节点部署实现思路，用以实现线上环境后端应用无缝切换上线新功能。目前仅支持以 Nacos 为注册中心的服务。上线准备中需要为服务提供一个 deregister restful 接口供蓝绿脚本调用（以下有示例代码）。 
 
@@ -96,7 +96,7 @@ bash deploy.sh "example" "example.jar" "dev" 8000 8999 2 1 20 256k 1024m 1024m
 
 ## 反馈 Feedback
 
-[Issues](https://github.com/godcheese/java-server-app-blue-green-node/issues)
+[Issues](https://github.com/godcheese/java-server-app-red-black-node/issues)
 
 ## 捐赠 Donation
 
